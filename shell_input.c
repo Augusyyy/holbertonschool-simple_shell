@@ -4,7 +4,8 @@
 char *copy_line(void)
 {
 	char arr[2] = {0};
-	char *buffer = malloc(sizeof(char) * 1204);
+	int buffer_size = 1024;
+	char *buffer = malloc(sizeof(char) * buffer_size);
 	int buffer_len = 0;
 
 	while (1)
@@ -21,6 +22,12 @@ char *copy_line(void)
 		//using 'write' output also can using printf
 		buffer[buffer_len] = arr[0];
 		buffer_len++;
+
+		if(buffer_len > *buffer)
+		{
+			buffer_size = buffer_size * 2;
+			buffer = realloc(buffer, sizeof(char *) * buffer_size);
+		}
 	}
 
 	buffer[buffer_len] = '\0';
