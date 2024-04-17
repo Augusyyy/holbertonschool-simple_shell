@@ -1,6 +1,9 @@
 #include "shell.h"
 
-
+/**
+ * main - it is a entrance simple shell.
+ * Return: execute result of simple shell.
+ */
 int main(void)
 {
 	char *buffer;

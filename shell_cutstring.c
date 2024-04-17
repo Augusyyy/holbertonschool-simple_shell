@@ -1,7 +1,11 @@
 #include "shell.h"
 
 
-
+/**
+ * cut_string - Parse the incoming string.
+ * @buffer: buffer is the string to be parsed.
+ * Return: return the parsed result.
+ */
 char **cut_string(char *buffer)
 {
 	int token_buffer_size = 64;

@@ -1,6 +1,9 @@
 #include "shell.h"
 
-
+/**
+ * copy_line - Save the information to buffer from READ.
+ * Return: return buffer.
+ */
 char *copy_line(void)
 {
 	char arr[2] = {0};
@@ -35,7 +38,10 @@ char *copy_line(void)
 	return(buffer);
 
 }
-
+/**
+ * copy_getchar - Save the information to buffer from putchar.
+ * Return: return buffer.
+ */
 char *copy_getchar(void)
 {
 	{

@@ -1,6 +1,10 @@
 #include "shell.h"
 
-
+/**
+ * shell_execute - Bring the parsed buffer into execution.
+ * @command: command stores the value of the array.
+ * Return: return the command.
+ */
 void shell_execute(char **command)
 {
 	pid_t pid; // 用于存储进程ID
