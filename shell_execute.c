@@ -8,6 +8,7 @@
 void shell_execute(char **command)
 {
 	pid_t pid;
+	int status;
 
 	/*创建子进程*/
 	pid = fork();
@@ -30,6 +31,7 @@ void shell_execute(char **command)
 		 * 父进程，在父进程中等待子进程结束，
 		 * 可以选择等待子进程退出状态或其他操作
 		 */
-		wait(NULL);
+		wait(&status);
+		WEXITSTATUS(status);
 	}
 }
