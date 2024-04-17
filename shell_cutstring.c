@@ -23,10 +23,10 @@ char **cut_string(char *buffer)
 		/*继续获取token*/
 		token = strtok(NULL, " ");
 		command[index++] = token;
-		if (index > token_buffer_size)
+		if(index > token_buffer_size)
 		{
 			token_buffer_size = token_buffer_size * 2;
-			command = realloc(command, sizeof(char *) * token_buffer_size);
+			command = realloc(command,sizeof (char *) * token_buffer_size);
 		}
 	}
 
