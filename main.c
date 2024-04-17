@@ -10,13 +10,17 @@ int main(void)
 	char **command;
 	char *prompt = "$ ";
 
-	if(isatty(STDIN_FILENO) == 1) /*这个isatty是 判断是运行程序后输入，还是运行之前就有有输入*/
+	/*
+	 * 这个isatty是 判断是运行程序后输入，
+	 * 还是运行之前就有有输入
+	 */
+	if (isatty(STDIN_FILENO) == 1)
 	{
 		while (2)
 		{
 			write(STDOUT_FILENO, prompt, 2);
 			buffer = copy_line();
-			if (strcmp(buffer, "exit") == 0)
+			if (strcmp(buffer, "exit") == 0 || strcmp(buffer, "^D") == 0)
 			{
 				break;
 			}
