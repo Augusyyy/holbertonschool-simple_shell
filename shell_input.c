@@ -13,22 +13,25 @@ char *copy_line(void)
 
 	while (1)
 	{
-		/**
-	 	* * how long is the arr[]
-		*/
-		read(STDIN_FILENO, arr, 1); //read (fd , buffer,  size);
-		/**
-		* 'return' -> off while
-		*/
+		/*
+		 * how long is the arr[]
+		 * read (fd , buffer,  size);
+		 */
+		read(STDIN_FILENO, arr, 1);
+		/*
+		 * 'return' -> off while
+		 */
 		if (arr[0] == '\n')
 			break;
-		//using 'write' output also can using printf
-		if(arr[0] == '\0')
+		/*
+		 * using 'write' output also can using printf
+		 */
+		if (arr[0] == '\0')
 			exit(EXIT_SUCCESS);
 		buffer[buffer_len] = arr[0];
 		buffer_len++;
 
-		if(buffer_len > buffer_size)
+		if (buffer_len > buffer_size)
 		{
 			buffer_size = buffer_size * 2;
 			buffer = realloc(buffer, sizeof(char *) * buffer_size);
@@ -37,8 +40,7 @@ char *copy_line(void)
 
 	buffer[buffer_len] = '\0';
 
-	return(buffer);
-
+	return (buffer);
 }
 /**
  * copy_getchar - Save the information to buffer from putchar.
@@ -60,11 +62,11 @@ char *copy_getchar(void)
 			*/
 			if (character == EOF)
 				break;
-			//using 'write' output also can using printf
+			/*using 'write' output also can using printf*/
 			buffer[buffer_len] = character;
 			buffer_len++;
 
-			if(buffer_len > buffer_size)
+			if (buffer_len > buffer_size)
 			{
 				buffer_size = buffer_size * 2;
 				buffer = realloc(buffer, sizeof(char *) * buffer_size);
@@ -72,8 +74,6 @@ char *copy_getchar(void)
 		}
 
 		buffer[buffer_len] = '\0';
-
-		return(buffer);
-
+		return (buffer);
 	}
 }

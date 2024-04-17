@@ -13,4 +13,4 @@ void shell_execute(char **command);
 char *copy_getchar(void);
 void signal_handler(int sig);
 
-#endif //SIMPLE_SHELL_SHELL_H
+#endif
