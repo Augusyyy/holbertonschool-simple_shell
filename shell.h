@@ -6,6 +6,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
 
 char *copy_line(void);
 char **cut_string(char *buffer);

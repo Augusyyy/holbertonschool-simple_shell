@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * sig_handler - Prints a new prompt upon a signal.
+ * signal_handler - Prints a new prompt upon a signal.
  * @sig: The signal.
  */
 void signal_handler(int sig)
