@@ -46,7 +46,7 @@ int main(void)
 	}
 	else
 	{
-		buffer = copy_getchar();
+		buffer = copy_line();
 		command = cut_string(buffer);
 		shell_execute(command);
 		free(buffer);

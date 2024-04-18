@@ -15,7 +15,6 @@
 char *copy_line(void);
 char **cut_string(char *buffer);
 void shell_execute(char **command);
-char *copy_getchar(void);
 void signal_handler(int sig);
 
 #endif
