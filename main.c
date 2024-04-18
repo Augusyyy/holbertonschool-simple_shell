@@ -48,5 +48,8 @@ int main(void)
 		command = cut_string(buffer);
 		shell_execute(command);
 	}
+
+	free(buffer);
+	free(command);
 	return (0);
 }
