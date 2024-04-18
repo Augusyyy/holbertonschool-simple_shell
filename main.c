@@ -40,6 +40,8 @@ int main(void)
 			}
 			command = cut_string(buffer);
 			shell_execute(command);
+			free(buffer);
+			free(command);
 		}
 	}
 	else
@@ -47,9 +49,9 @@ int main(void)
 		buffer = copy_getchar();
 		command = cut_string(buffer);
 		shell_execute(command);
+		free(buffer);
+		free(command);
 	}
 
-	free(buffer);
-	free(command);
 	return (0);
 }
