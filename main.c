@@ -26,13 +26,26 @@ int main(void)
 
 	signal(SIGINT, signal_handler);
 	if (isatty(STDIN_FILENO) == 1)
-	{
 		while (2)
 		{
 			write(STDOUT_FILENO, prompt, 2);
 			buffer = copy_line(&ret);
 			if (strcmp(buffer, "exit") == 0)
+				break;
+			command = cut_string(buffer);
+			shell_execute(command);
+			free(buffer);
+			free(command);
+		}
+	else
+		while (1)
+		{
+			buffer = copy_line(&ret);
+			if (ret == -1)
 			{
+				free(buffer);
+				if (command != NULL)
+					free(command);
 				break;
 			}
 			command = cut_string(buffer);
@@ -40,20 +53,5 @@ int main(void)
 			free(buffer);
 			free(command);
 		}
-	}
-	else
-	{
-		while (1)
-		{
-			buffer = copy_line(&ret);
-			if (ret == -1)
-				break;
-			command = cut_string(buffer);
-			shell_execute(command);
-			free(buffer);
-			free(command);
-		}
-
-	}
 	return (0);
 }

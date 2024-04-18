@@ -19,7 +19,7 @@ void shell_execute(char **command)
 	else if (pid == 0)
 	{
 		/*子进程，在子进程中执行ls命令，使用execvp执行命令*/
-		execv(command[0], command);
+		execvp(command[0], command);
 		/*如果execvp失败，打印错误信息*/
 		perror("execvp failed");
 		/*退出子进程*/
