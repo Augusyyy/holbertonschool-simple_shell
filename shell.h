@@ -12,7 +12,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-char *copy_line(void);
+char *copy_line(int *ret);
 char **cut_string(char *buffer);
 void shell_execute(char **command);
 void signal_handler(int sig);
