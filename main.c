@@ -39,7 +39,6 @@ int main(void)
 				break;
 			}
 			command = cut_string(buffer);
-
 			shell_execute(command);
 		}
 	}

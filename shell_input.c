@@ -57,6 +57,11 @@ char *copy_getchar(void)
 		while (1)
 		{
 			character = getchar();
+			if (character == '\n')
+			{
+				buffer[buffer_len] = '\0';;
+				return (buffer);
+			}
 			/**
 			* 'return' -> off while
 			*/
