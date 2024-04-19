@@ -1,12 +1,7 @@
 #include "shell.h"
 
-void help_env(void);
-void help_setenv(void);
-void help_unsetenv(void);
-void help_history(void);
-
 /**
- * help_env - Displays information on the shellby builtin command 'env'.
+ * help_env - Displays information on the builtin command 'env'.
  */
 void help_env(void)
 {
@@ -16,7 +11,7 @@ void help_env(void)
 }
 
 /**
- * help_setenv - Displays information on the shellby builtin command 'setenv'.
+ * help_setenv - Displays information on the builtin command 'setenv'.
  */
 void help_setenv(void)
 {
@@ -30,7 +25,7 @@ void help_setenv(void)
 }
 
 /**
- * help_unsetenv - Displays information on the shellby builtin command
+ * help_unsetenv - Displays information on the builtin command
  * 'unsetenv'.
  */
 void help_unsetenv(void)

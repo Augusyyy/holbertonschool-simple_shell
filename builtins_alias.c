@@ -31,12 +31,12 @@ int aug_shell_alias(char **args, char __attribute__((__unused__)) **front)
 	for (i = 0; args[i]; i++)
 	{
 		temp = aliases;
-		value = strchr(args[i], '=');
+		value = _strchr(args[i], '=');
 		if (!value)
 		{
 			while (temp)
 			{
-				if (strcmp(args[i], temp->name) == 0)
+				if (_strcmp(args[i], temp->name) == 0)
 				{
 					print_alias(temp);
 					break;
@@ -66,7 +66,7 @@ void set_alias(char *var_name, char *value)
 
 	*value = '\0';
 	value++;
-	len = strlen(value) - strspn(value, "'\"");
+	len = _strlen(value) - _strspn(value, "'\"");
 	new_value = malloc(sizeof(char) * (len + 1));
 	if (!new_value)
 		return;
@@ -78,7 +78,7 @@ void set_alias(char *var_name, char *value)
 	new_value[k] = '\0';
 	while (temp)
 	{
-		if (strcmp(var_name, temp->name) == 0)
+		if (_strcmp(var_name, temp->name) == 0)
 		{
 			free(temp->value);
 			temp->value = new_value;
@@ -97,15 +97,15 @@ void set_alias(char *var_name, char *value)
 void print_alias(alias_t *alias)
 {
 	char *alias_string;
-	int len = strlen(alias->name) + strlen(alias->value) + 4;
+	int len = _strlen(alias->name) + _strlen(alias->value) + 4;
 
 	alias_string = malloc(sizeof(char) * (len + 1));
 	if (!alias_string)
 		return;
-	strcpy(alias_string, alias->name);
-	strcat(alias_string, "='");
-	strcat(alias_string, alias->value);
-	strcat(alias_string, "'\n");
+	_strcpy(alias_string, alias->name);
+	_strcat(alias_string, "='");
+	_strcat(alias_string, alias->value);
+	_strcat(alias_string, "'\n");
 
 	write(STDOUT_FILENO, alias_string, len);
 	free(alias_string);
@@ -123,22 +123,22 @@ char **replace_aliases(char **args)
 	int i;
 	char *new_value;
 
-	if (strcmp(args[0], "alias") == 0)
+	if (_strcmp(args[0], "alias") == 0)
 		return (args);
 	for (i = 0; args[i]; i++)
 	{
 		temp = aliases;
 		while (temp)
 		{
-			if (strcmp(args[i], temp->name) == 0)
+			if (_strcmp(args[i], temp->name) == 0)
 			{
-				new_value = malloc(sizeof(char) * (strlen(temp->value) + 1));
+				new_value = malloc(sizeof(char) * (_strlen(temp->value) + 1));
 				if (!new_value)
 				{
 					free_args(args, args);
 					return (NULL);
 				}
-				strcpy(new_value, temp->value);
+				_strcpy(new_value, temp->value);
 				free(args[i]);
 				args[i] = new_value;
 				i--;

@@ -1,15 +1,4 @@
-/*
- * File: str_funcs2.c
- * Auth: Alex Yu
- *       Brennan D Baraban
- */
-
 #include "shell.h"
-
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
 
 /**
  * _strchr - Locates a character in a string.

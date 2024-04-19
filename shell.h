@@ -1,12 +1,6 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-/*
- * File: shell.h
- * Auth: Alex Yu
- *       Brennan D Baraban
- */
-
 #include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
@@ -19,13 +13,15 @@
 
 #define END_OF_FILE -2
 #define EXIT -3
+#define CAN_OPEN_RETURN 127
+#define PERMISSION_DENIED 126
 
 /* Global environemnt */
 extern char **environ;
 /* Global program name */
-char *name;
+//char *name;
 /* Global history counter */
-int hist;
+//int hist;
 
 /**
  * struct list_s - A new struct type defining a linked list.
@@ -86,25 +82,15 @@ int check_args(char **args);
 void free_args(char **args, char **front);
 char **replace_aliases(char **args);
 
-/* String functions */
-int _strlen(const char *s);
-char *_strcat(char *dest, const char *src);
-char *_strncat(char *dest, const char *src, size_t n);
-char *_strcpy(char *dest, const char *src);
-char *_strchr(char *s, char c);
-int _strspn(char *s, char *accept);
-int _strcmp(char *s1, char *s2);
-int _strncmp(const char *s1, const char *s2, size_t n);
-
 /* Builtins */
 int (*get_builtin(char *command))(char **args, char **front);
-int shellby_exit(char **args, char **front);
-int shellby_env(char **args, char __attribute__((__unused__)) **front);
-int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_unsetenv(char **args, char __attribute__((__unused__)) **front);
-int shellby_cd(char **args, char __attribute__((__unused__)) **front);
-int shellby_alias(char **args, char __attribute__((__unused__)) **front);
-int shellby_help(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_exit(char **args, char **front);
+int aug_shell_env(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_setenv(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_cd(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_alias(char **args, char __attribute__((__unused__)) **front);
+int aug_shell_help(char **args, char __attribute__((__unused__)) **front);
 
 /* Builtin Helpers */
 char **_copyenv(void);
@@ -138,4 +124,15 @@ void help_unsetenv(void);
 void help_history(void);
 
 int proc_file_commands(char *file_path, int *exe_ret);
+
+/* String functions */
+int _strlen(const char *s);
+char *_strcat(char *dest, const char *src);
+char *_strncat(char *dest, const char *src, size_t n);
+char *_strcpy(char *dest, const char *src);
+char *_strchr(char *s, char c);
+int _strspn(char *s, char *accept);
+int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
+
 #endif /* _SHELL_H_ */

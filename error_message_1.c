@@ -15,7 +15,7 @@ char *error_126(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 24;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -23,12 +23,12 @@ char *error_126(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
-	strcat(error, ": ");
-	strcat(error, args[0]);
-	strcat(error, ": Permission denied\n");
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
+	_strcat(error, ": ");
+	_strcat(error, args[0]);
+	_strcat(error, ": Permission denied\n");
 
 	free(hist_str);
 	return (error);
@@ -49,7 +49,7 @@ char *error_127(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 16;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -57,12 +57,12 @@ char *error_127(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
-	strcat(error, ": ");
-	strcat(error, args[0]);
-	strcat(error, ": not found\n");
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
+	_strcat(error, ": ");
+	_strcat(error, args[0]);
+	_strcat(error, ": not found\n");
 
 	free(hist_str);
 	return (error);

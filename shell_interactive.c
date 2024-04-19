@@ -51,8 +51,8 @@ int call_args(char **args, char **front, int *exe_ret)
 		return (*exe_ret);
 	for (index = 0; args[index]; index++)
 	{
-		or_compare_result = strncmp(args[index], "||", 2);
-		and_compare_result = strncmp(args[index], "&&", 2);
+		or_compare_result = _strncmp(args[index], "||", 2);
+		and_compare_result = _strncmp(args[index], "&&", 2);
 		if (or_compare_result == 0 || and_compare_result == 0)
 		{
 			free(args[index]);
@@ -144,7 +144,7 @@ int handle_args(int *exe_ret)
 
 	for (index = 0; args[index]; index++)
 	{
-		if (strncmp(args[index], ";", 1) == 0)
+		if (_strncmp(args[index], ";", 1) == 0)
 		{
 			free(args[index]);
 			args[index] = NULL;

@@ -18,14 +18,14 @@ alias_t *add_alias_end(alias_t **head, char *name, char *value)
 		return (NULL);
 
 	new_node->next = NULL;
-	new_node->name = malloc(sizeof(char) * (strlen(name) + 1));
+	new_node->name = malloc(sizeof(char) * (_strlen(name) + 1));
 	if (!new_node->name)
 	{
 		free(new_node);
 		return (NULL);
 	}
 	new_node->value = value;
-	strcpy(new_node->name, name);
+	_strcpy(new_node->name, name);
 
 	if (*head)
 	{

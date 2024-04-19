@@ -1,9 +1,3 @@
-/*
- * File: errors.c
- * Auth: Alex Yu
- *       Brennan D Baraban
- */
-
 #include "shell.h"
 
 int num_len(int num);
@@ -63,9 +57,7 @@ char *_itoa(int num)
 		buffer[0] = '-';
 	}
 	else
-	{
 		num1 = num;
-	}
 
 	len--;
 	do {
@@ -105,10 +97,10 @@ int create_error(char **args, int err)
 		else
 			error = error_2_cd(args);
 		break;
-	case 126:
+	case PERMISSION_DENIED:
 		error = error_126(args);
 		break;
-	case 127:
+	case CAN_OPEN_RETURN:
 		error = error_127(args);
 		break;
 	}

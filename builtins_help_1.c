@@ -1,17 +1,11 @@
 #include "shell.h"
 
-void help_all(void);
-void help_alias(void);
-void help_cd(void);
-void help_exit(void);
-void help_help(void);
-
 /**
- * help_all - Displays all possible builtin shellby commands.
+ * help_all - Displays all possible builtin commands.
  */
 void help_all(void)
 {
-	char *msg = "Shellby\nThese shell commands are defined internally.\n";
+	char *msg = "hsh\nThese shell commands are defined internally.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find ";
@@ -29,7 +23,7 @@ void help_all(void)
 }
 
 /**
- * help_alias - Displays information on the shellby builtin command 'alias'.
+ * help_alias - Displays information on the builtin command 'alias'.
  */
 void help_alias(void)
 {
@@ -51,7 +45,7 @@ void help_alias(void)
 }
 
 /**
- * help_cd - Displays information on the shellby builtin command 'cd'.
+ * help_cd - Displays information on the builtin command 'cd'.
  */
 void help_cd(void)
 {
@@ -71,7 +65,7 @@ void help_cd(void)
 }
 
 /**
- * help_exit - Displays information on the shellby builtin command 'exit'.
+ * help_exit - Displays information on the builtin command 'exit'.
  */
 void help_exit(void)
 {
@@ -87,11 +81,11 @@ void help_exit(void)
 }
 
 /**
- * help_help - Displays information on the shellby builtin command 'help'.
+ * help_help - Displays information on the builtin command 'help'.
  */
 void help_help(void)
 {
-	char *msg = "help: help\n\tSee all possible Shellby builtin commands.\n";
+	char *msg = "help: help\n\tSee all possible hsh builtin commands.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n      help [BUILTIN NAME]\n\tSee specific information on each ";

@@ -15,7 +15,7 @@ char *error_env(char **args)
 		return (NULL);
 
 	args--;
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 45;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 45;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -23,12 +23,12 @@ char *error_env(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
-	strcat(error, ": ");
-	strcat(error, args[0]);
-	strcat(error, ": Unable to add/remove from environment\n");
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
+	_strcat(error, ": ");
+	_strcat(error, args[0]);
+	_strcat(error, ": Unable to add/remove from environment\n");
 
 	free(hist_str);
 	return (error);
@@ -44,14 +44,14 @@ char *error_1(char **args)
 	char *error;
 	int len;
 
-	len = strlen("hsh") + strlen(args[0]) + 13;
+	len = _strlen("hsh") + _strlen(args[0]) + 13;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 		return (NULL);
 
-	strcpy(error, "alias: ");
-	strcat(error, args[0]);
-	strcat(error, " not found\n");
+	_strcpy(error, "alias: ");
+	_strcat(error, args[0]);
+	_strcat(error, " not found\n");
 
 	return (error);
 }
@@ -70,7 +70,7 @@ char *error_2_exit(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 27;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 27;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -78,12 +78,12 @@ char *error_2_exit(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
-	strcat(error, ": exit: Illegal number: ");
-	strcat(error, args[0]);
-	strcat(error, "\n");
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
+	_strcat(error, ": exit: Illegal number: ");
+	_strcat(error, args[0]);
+	_strcat(error, "\n");
 
 	free(hist_str);
 	return (error);
@@ -106,7 +106,7 @@ char *error_2_cd(char **args)
 
 	if (args[0][0] == '-')
 		args[0][2] = '\0';
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 24;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -114,15 +114,15 @@ char *error_2_cd(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
 	if (args[0][0] == '-')
-		strcat(error, ": cd: Illegal option ");
+		_strcat(error, ": cd: Illegal option ");
 	else
-		strcat(error, ": cd: can't cd to ");
-	strcat(error, args[0]);
-	strcat(error, "\n");
+		_strcat(error, ": cd: can't cd to ");
+	_strcat(error, args[0]);
+	_strcat(error, "\n");
 
 	free(hist_str);
 	return (error);
@@ -143,7 +143,7 @@ char *error_2_syntax(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = strlen("hsh") + strlen(hist_str) + strlen(args[0]) + 33;
+	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 33;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -151,12 +151,12 @@ char *error_2_syntax(char **args)
 		return (NULL);
 	}
 
-	strcpy(error, "hsh");
-	strcat(error, ": ");
-	strcat(error, hist_str);
-	strcat(error, ": Syntax error: \"");
-	strcat(error, args[0]);
-	strcat(error, "\" unexpected\n");
+	_strcpy(error, "hsh");
+	_strcat(error, ": ");
+	_strcat(error, hist_str);
+	_strcat(error, ": Syntax error: \"");
+	_strcat(error, args[0]);
+	_strcat(error, "\" unexpected\n");
 
 	free(hist_str);
 	return (error);

@@ -21,7 +21,7 @@ int aug_shell_env(char **args, char __attribute__((__unused__)) **front)
 
 	for (index = 0; environ[index]; index++)
 	{
-		write(STDOUT_FILENO, environ[index], strlen(environ[index]));
+		write(STDOUT_FILENO, environ[index], _strlen(environ[index]));
 		write(STDOUT_FILENO, &nc, 1);
 	}
 
@@ -48,12 +48,12 @@ int aug_shell_setenv(char **args, char __attribute__((__unused__)) **front)
 	if (!args[0] || !args[1])
 		return (create_error(args, -1));
 
-	new_value = malloc(strlen(args[0]) + 1 + strlen(args[1]) + 1);
+	new_value = malloc(_strlen(args[0]) + 1 + _strlen(args[1]) + 1);
 	if (!new_value)
 		return (create_error(args, -1));
-	strcpy(new_value, args[0]);
-	strcat(new_value, "=");
-	strcat(new_value, args[1]);
+	_strcpy(new_value, args[0]);
+	_strcat(new_value, "=");
+	_strcat(new_value, args[1]);
 
 	env_var = _getenv(args[0]);
 	if (env_var)
