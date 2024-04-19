@@ -10,6 +10,8 @@ void shell_execute(char **command)
 	pid_t pid;
 	int status;
 
+	if (*command == NULL)
+		return;
 	/*创建子进程*/
 	pid = fork();
 	if (pid < 0)
