@@ -1,3 +1,9 @@
+/*
+ * File: locate.c
+ * Auth: Alex Yu
+ *       Brennan D Baraban
+ */
+
 #include "shell.h"
 
 char *fill_path_dir(char *path);
@@ -25,13 +31,13 @@ char *get_location(char *command)
 
 	while (dirs)
 	{
-		temp = malloc(strlen(dirs->dir) + strlen(command) + 2);
+		temp = malloc(_strlen(dirs->dir) + _strlen(command) + 2);
 		if (!temp)
 			return (NULL);
 
-		strcpy(temp, dirs->dir);
-		strcat(temp, "/");
-		strcat(temp, command);
+		_strcpy(temp, dirs->dir);
+		_strcat(temp, "/");
+		_strcat(temp, command);
 
 		if (stat(temp, &st) == 0)
 		{
@@ -67,7 +73,7 @@ char *fill_path_dir(char *path)
 		if (path[i] == ':')
 		{
 			if (path[i + 1] == ':' || i == 0 || path[i + 1] == '\0')
-				length += strlen(pwd) + 1;
+				length += _strlen(pwd) + 1;
 			else
 				length++;
 		}
@@ -84,20 +90,20 @@ char *fill_path_dir(char *path)
 		{
 			if (i == 0)
 			{
-				strcat(path_copy, pwd);
-				strcat(path_copy, ":");
+				_strcat(path_copy, pwd);
+				_strcat(path_copy, ":");
 			}
 			else if (path[i + 1] == ':' || path[i + 1] == '\0')
 			{
-				strcat(path_copy, ":");
-				strcat(path_copy, pwd);
+				_strcat(path_copy, ":");
+				_strcat(path_copy, pwd);
 			}
 			else
-				strcat(path_copy, ":");
+				_strcat(path_copy, ":");
 		}
 		else
 		{
-			strncat(path_copy, &path[i], 1);
+			_strncat(path_copy, &path[i], 1);
 		}
 	}
 	return (path_copy);
