@@ -25,13 +25,17 @@ char *copy_line(int *ret)
 			return (buffer);
 		}
 		if (arr[0] == EOF)
+		{
+			free(buffer);
 			break;
-
+		}
 		if (arr[0] == '\0')
+		{
+			free(buffer);
 			exit(EXIT_SUCCESS);
+		}
 		buffer[buffer_len] = arr[0];
 		buffer_len++;
-
 		if (buffer_len > buffer_size)
 		{
 			buffer_size = buffer_size * 2;

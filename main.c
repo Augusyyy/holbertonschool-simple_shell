@@ -19,9 +19,8 @@ void signal_handler(int sig)
  */
 int main(void)
 {
-	char *buffer;
+	char *buffer, *prompt = "$ ";
 	char **command;
-	char *prompt = "$ ";
 	int ret;
 
 	signal(SIGINT, signal_handler);
@@ -42,12 +41,7 @@ int main(void)
 		{
 			buffer = copy_line(&ret);
 			if (ret == -1)
-			{
-				free(buffer);
-				if (command != NULL)
-					free(command);
 				break;
-			}
 			command = cut_string(buffer);
 			shell_execute(command);
 			free(buffer);
