@@ -78,7 +78,7 @@ char *error_2_exit(char **args)
 		return (NULL);
 	}
 
-	_strcpy(error, "hsh");
+	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": exit: Illegal number: ");
@@ -114,7 +114,7 @@ char *error_2_cd(char **args)
 		return (NULL);
 	}
 
-	_strcpy(error, "hsh");
+	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	if (args[0][0] == '-')
@@ -151,7 +151,7 @@ char *error_2_syntax(char **args)
 		return (NULL);
 	}
 
-	_strcpy(error, "hsh");
+	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": Syntax error: \"");
