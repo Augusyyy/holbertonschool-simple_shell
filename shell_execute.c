@@ -1,39 +1,53 @@
 #include "shell.h"
 
 /**
- * shell_execute - Bring the parsed buffer into execution.
- * @command: command stores the value of the array.
- * Return: return the command.
+ * execute - Executes a command in a child process.
+ * @args: An array of arguments.
+ * @front: A double pointer to the beginning of args.
+ *
+ * Return: If an error occurs - a corresponding error code.
+ *         O/w - The exit value of the last executed command.
  */
-void shell_execute(char **command)
+int execute(char **args, char **front)
 {
-	pid_t pid;
-	int status;
+	pid_t child_pid;
+	int status, flag = 0, ret = 0;
+	char *command = args[0];
 
-	if (*command == NULL)
-		return;
-	/*创建子进程*/
-	pid = fork();
-	if (pid < 0)
+	if (command[0] != '/' && command[0] != '.')
 	{
-		perror("fork failed");
+		flag = 1;
+		command = get_location(command);
 	}
-	else if (pid == 0)
-	{
-		/*子进程，在子进程中执行ls命令，使用execvp执行命令*/
-		execvp(command[0], command);
-		/*如果execvp失败，打印错误信息*/
-		perror("execvp failed");
-		/*退出子进程*/
-		exit(EXIT_SUCCESS);
-	}
+	if (!command || (access(command, F_OK) == -1))
+		ret = (create_error(args, 127));
 	else
 	{
-		/*
-		 * 父进程，在父进程中等待子进程结束，
-		 * 可以选择等待子进程退出状态或其他操作
-		 */
-		wait(&status);
-		WEXITSTATUS(status);
+		child_pid = fork();
+		if (child_pid == -1)
+		{
+			if (flag)
+				free(command);
+			perror("Error child:");
+			return (1);
+		}
+		if (child_pid == 0)
+		{
+			execve(command, args, environ);
+			if (errno == EACCES)
+				ret = (create_error(args, 126));
+			free_env();
+			free_args(args, front);
+			free_alias_list(aliases);
+			_exit(ret);
+		}
+		else
+		{
+			wait(&status);
+			ret = WEXITSTATUS(status);
+		}
 	}
+	if (flag)
+		free(command);
+	return (ret);
 }
