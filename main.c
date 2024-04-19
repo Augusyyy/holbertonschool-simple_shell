@@ -40,8 +40,6 @@ int main(void)
 		while (1)
 		{
 			buffer = copy_line(&ret);
-			if (ret == -1)
-				break;
 			command = cut_string(buffer);
 			shell_execute(command);
 			free(buffer);
