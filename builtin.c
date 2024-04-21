@@ -187,7 +187,7 @@ int aug_shell_help(char **args, char __attribute__((__unused__)) **front)
 	else if (_strcmp(args[0], "help") == 0)
 		help_help();
 	else
-		write(STDERR_FILENO, "hsh", _strlen("hsh"));
+		write(STDERR_FILENO, "hsh", _strlen("./hsh"));
 
 	return (0);
 }

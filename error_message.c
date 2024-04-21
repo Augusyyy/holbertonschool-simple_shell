@@ -15,7 +15,7 @@ char *error_env(char **args)
 		return (NULL);
 
 	args--;
-	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 45;
+	len = _strlen("./hsh") + _strlen(hist_str) + _strlen(args[0]) + 45;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -23,7 +23,7 @@ char *error_env(char **args)
 		return (NULL);
 	}
 
-	_strcpy(error, "hsh");
+	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": ");
@@ -44,7 +44,7 @@ char *error_1(char **args)
 	char *error;
 	int len;
 
-	len = _strlen("hsh") + _strlen(args[0]) + 13;
+	len = _strlen("./hsh") + _strlen(args[0]) + 13;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 		return (NULL);
@@ -70,7 +70,7 @@ char *error_2_exit(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 27;
+	len = _strlen("./hsh") + _strlen(hist_str) + _strlen(args[0]) + 27;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -106,7 +106,7 @@ char *error_2_cd(char **args)
 
 	if (args[0][0] == '-')
 		args[0][2] = '\0';
-	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 24;
+	len = _strlen("./hsh") + _strlen(hist_str) + _strlen(args[0]) + 24;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -143,7 +143,7 @@ char *error_2_syntax(char **args)
 	if (!hist_str)
 		return (NULL);
 
-	len = _strlen("hsh") + _strlen(hist_str) + _strlen(args[0]) + 33;
+	len = _strlen("./hsh") + _strlen(hist_str) + _strlen(args[0]) + 33;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{

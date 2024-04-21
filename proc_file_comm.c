@@ -18,7 +18,7 @@ int cant_open(char *file_path)
 	if (!hist_str)
 		return (CAN_OPEN_RETURN);
 
-	len = _strlen("hsh") + _strlen(hist_str) + _strlen(file_path) + 16;
+	len = _strlen("./hsh") + _strlen(hist_str) + _strlen(file_path) + 16;
 	error = malloc(sizeof(char) * (len + 1));
 	if (!error)
 	{
@@ -26,7 +26,7 @@ int cant_open(char *file_path)
 		return (CAN_OPEN_RETURN);
 	}
 
-	_strcpy(error, "hsh");
+	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
 	_strcat(error, ": Can't open ");
