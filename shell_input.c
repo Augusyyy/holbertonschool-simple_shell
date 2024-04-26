@@ -92,7 +92,7 @@ void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	static ssize_t input = 0, buffer_size = BUFFER_SIZE;
+	static ssize_t input = 0, old_buffer_size, buffer_size = BUFFER_SIZE;
 	ssize_t ret;
 	char c = 'x', *buffer;
 	int r;
@@ -119,8 +119,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		}
 		if (input >= (buffer_size - 1))
 		{
-			buffer_size = buffer_size + buffer_size;
-			buffer = realloc(buffer, buffer_size);
+			old_buffer_size = buffer_size;
+			buffer_size = buffer_size * 2;
+			buffer = _realloc(buffer, old_buffer_size, buffer_size);
 		}
 		buffer[input] = c;
 		input++;
