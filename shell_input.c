@@ -62,18 +62,18 @@ void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
 {
 	if (*lineptr == NULL)
 	{
-		if (b > 120)
+		if (b > BUFFER_SIZE)
 			*n = b;
 		else
-			*n = 120;
+			*n = BUFFER_SIZE;
 		*lineptr = buffer;
 	}
 	else if (*n < b)
 	{
-		if (b > 120)
+		if (b > BUFFER_SIZE)
 			*n = b;
 		else
-			*n = 120;
+			*n = BUFFER_SIZE;
 		*lineptr = buffer;
 	}
 	else
@@ -88,12 +88,11 @@ void assign_lineptr(char **lineptr, size_t *n, char *buffer, size_t b)
  * @lineptr: A buffer to store the input.
  * @n: The size of lineptr.
  * @stream: The stream to read from.
- *
  * Return: The number of bytes read.
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	static ssize_t input;
+	static ssize_t input = 0, buffer_size = BUFFER_SIZE;
 	ssize_t ret;
 	char c = 'x', *buffer;
 	int r;
@@ -102,9 +101,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		fflush(stream);
 	else
 		return (-1);
-	input = 0;
-
-	buffer = malloc(sizeof(char) * 2000);
+	buffer = malloc(sizeof(char) * buffer_size);
 	if (!buffer)
 		return (-1);
 	while (c != '\n')
@@ -120,8 +117,11 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			input++;
 			break;
 		}
-		if (input >= 2000)
-			buffer = _realloc(buffer, input, input + 1);
+		if (input >= (buffer_size - 1))
+		{
+			buffer_size = buffer_size + buffer_size;
+			buffer = realloc(buffer, buffer_size);
+		}
 		buffer[input] = c;
 		input++;
 	}

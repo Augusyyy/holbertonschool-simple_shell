@@ -16,6 +16,8 @@
 #define CAN_OPEN_RETURN 127
 #define PERMISSION_DENIED 126
 
+#define BUFFER_SIZE 1024
+
 /* Global environemnt */
 extern char **environ;
 /**
