@@ -14,7 +14,7 @@ int cant_open(char *file_path)
 	char *error, *hist_str;
 	int len;
 
-	hist_str = _itoa(1);
+	hist_str = _itoa(0);
 	if (!hist_str)
 		return (CAN_OPEN_RETURN);
 
