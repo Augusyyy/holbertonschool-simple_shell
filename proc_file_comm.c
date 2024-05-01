@@ -75,9 +75,12 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		}
 		buffer[b_read] = '\0';
 		line_size += b_read;
-		line = _realloc(line, old_size, line_size);
+		line_size += 1;
+		if (line_size > old_size){
+			old_size = old_size * 2;
+			line = _realloc(line, old_size, old_size * 2);
+		}
 		_strcat(line, buffer);
-		old_size = line_size;
 	} while (b_read);
 	for (i = 0; line[i] == '\n'; i++)
 		line[i] = ' ';
