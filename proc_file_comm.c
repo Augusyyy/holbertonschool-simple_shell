@@ -25,7 +25,6 @@ int cant_open(char *file_path)
 		free(hist_str);
 		return (CAN_OPEN_RETURN);
 	}
-
 	_strcpy(error, "./hsh");
 	_strcat(error, ": ");
 	_strcat(error, hist_str);
@@ -70,7 +69,10 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	do {
 		b_read = read(file, buffer, 119);
 		if (b_read == 0 && line_size == 0)
+		{
+			free(line);
 			return (*exe_ret);
+		}
 		buffer[b_read] = '\0';
 		line_size += b_read;
 		line = _realloc(line, old_size, line_size);
