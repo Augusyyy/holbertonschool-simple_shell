@@ -54,7 +54,7 @@ int proc_file_commands(char *file_path, int *exe_ret)
 	unsigned int line_size = 0;
 	unsigned int old_size = 120;
 	char *line, **args, **front;
-	char buffer[120];
+	char buffer[120] = {0};
 	int ret;
 
 	file = open(file_path, O_RDONLY);
