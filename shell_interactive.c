@@ -59,12 +59,8 @@ int call_args(char **args, char **front, int *exe_ret)
 			args[index] = NULL;
 			args = replace_aliases(args);
 			ret = run_args(args, front, exe_ret);
-			if (*exe_ret != 0 && or_compare_result == 0)
-			{
-				args = &args[++index];
-				index = 0;
-			}
-			if (*exe_ret == 0 && and_compare_result == 0)
+			if ((*exe_ret != 0 && or_compare_result == 0)
+				|| (*exe_ret == 0 && and_compare_result == 0))
 			{
 				args = &args[++index];
 				index = 0;
