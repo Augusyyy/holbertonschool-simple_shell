@@ -76,7 +76,8 @@ int proc_file_commands(char *file_path, int *exe_ret)
 		}
 		buffer[b_read] = '\0';
 		line_size += b_read;
-		if (line_size > old_size){
+		if (line_size > old_size)
+		{
 			old_size = old_size * 2;
 			line = _realloc(line, old_size, old_size * 2);
 		}
